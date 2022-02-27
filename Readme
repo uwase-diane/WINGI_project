@@ -1,4 +1,4 @@
-# Application name
+#Application name
 
 # WINGI STORE
 
