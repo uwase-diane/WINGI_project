@@ -2,6 +2,14 @@
 {% block content %}
 
 <style>
+    .headers {
+        background-image: url("https://res.cloudinary.com/auca/image/upload/v1645882066/headers_vaojia.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: right;
+        height: 60vh;
+    }
     h1 {
       color: #545454;
       font-family: 'Dosis', sans-serif;
@@ -21,46 +29,136 @@
     .hov:hover{
       background: rgb(255, 255, 255);
     }
-  
-  </style>
-  
-  <hr>
-  
-  <body>
-    <h1>PRODUCTS</h1>
-    
-    
-      <h5> By Category: </h5>
-      {% for category in categories %}
-  
-        <a href="/category/{{category.name}}" class="categories" style="color: #000;">{{category.name}}</a>
-  
-    {% endfor %}
-    <div class="row row-cols-2 row-cols-md-6">
-      {% for item in items %}
-  
-      <div class="col-md-3 " style="padding-top: 100px;">
-        <div style="width: 12rem;">
-          <a class="hov" href="{% url 'product' item.id %}" style="color: #545454;">
-          <img class="card-img-top" src="{{item.image.url}}" alt="Card image cap">
-          
-            <h5 class="title" ><strong>{{item.title}}</strong></h5>
-          
-          <hr>
-          <p class="title">
+    footer{
         
-            {{item.price}} RF
-            
-          </p>
-          
-        </a>
+        bottom: 0px;
+        width: 100%;
+        background: #C9E265;
+        color: rgb(228, 226, 226);
+        margin-top: 200px;
+        padding-bottom:150px;
+    }
+    /* .order-content{
+    background-attachment: fixed;
+    background-image: url("https://res.cloudinary.com/auca/image/upload/v1645905451/8_igqysg.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    padding-top: 4%;
+    padding-bottom: 4%; */
+/* } */
+
+  </style>
+
+  <body>
+
+ <div class="headers" data-aos="fade-up" data-aos-duration="3000">
+     <div>
+         <!-- <h2  class="p-head" data-aos="fade-up" data-aos-duration="3000">
+            Discover amazing grocery deals and save actual money
+         </h2> -->
+     </div>
+
+ </div>   
+     
+      <h5 class="text-center" style="margin-top: 50px; font-family: 'Kumbh Sans', sans-serif; font-size: 30px;"><span style="color:#C9E265;">WINGI</span> categories</h5> 
+      <hr style="width: 10%; border: 2px solid #C9E265;" >  
+        <div class="col-md-20 text-center" style="padding-top: 40px;margin-right: 30px;">        
+            <span>
+    
+                {% for category in categories %}
+              <a class="btn btn-outline-dark" id="btn"
+              href="/category/{{category.name}}" style="margin:15px;">{{category.name}}</a>
+              {% endfor %}
+    
+            </span>
         
         </div>
-      </div>
-  
-      {% endfor %}
-  
-    </div>
+       
+            
+            <div class="order-content">
+                <h3 class="text-center" style="margin-top: 50px; font-family: 'Kumbh Sans', sans-serif; font-size: 30px;">All products</h3>
+                    <hr style="width:6%; border:2px solid #C9E265; margin-top: 20px;" > 
+                <div class="row row-cols-2 col-md-12 col-sm-2">
+                    
+                    {% for item in items %}
+                
+                    <div class="col-md-3 " style="padding-top: 100px;">
+                      <div style="width: 12rem;">
+                        <a class="hov" href="{% url 'product' item.id %}" style="color: #545454;">
+                        <img class="card-img-top" src="{{item.image.url}}" alt="Card image cap">
+                        
+                          <h5 class="title" ><strong>{{item.title}}</strong></h5>
+                        
+                        <hr>
+                        <p class="title">
+                      
+                          {{item.price}} RF
+                          
+                        </p>
+                        
+                      </a>
+                      
+                      </div>
+                    </div>
+                
+                    {% endfor %}
+                
+                  </div>
+            </div>
+       
+        
+    
   </body>
+
+  <footer style="text-align: center;">
+    <div>
+        <div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-widget">
+                        <h4 style="color:white;">WINGI Store</h4>
+                        <hr>
+                        <p style="color: rgb(65, 65, 65);">Wingi store is a e-comerce platform where merchants are able to create their own store and add their products
+                        to the store to share them with their consumers.</p> 
+                                                
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link">
+                        <h4 style="color: rgb(255, 255, 255);">Information</h4>
+                        <hr>
+                        <ul>
+                            <li ><a href="#" style="color: rgb(51, 51, 51);">About Us</a></li>
+                            <li><a href="#"  style="color: rgb(51, 51, 51);">Customer Service</a></li>
+                            <li><a href="#"  style="color: rgb(51, 51, 51);">Shop with us</a></li>
+                            <!-- <li><a href="#">Terms &amp; Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li> -->
+                            <li><a href="#"  style="color: rgb(51, 51, 51);">Delivery Information</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link-contact">
+                        <h4 style="color: rgb(255, 255, 255);">Contact Us</h4>
+                        <hr>
+                        <ul>
+                            <p style="color: rgb(51, 51, 51);margin-left:-0.5cm"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Address: KN 2 St&nbsp; Kigali </p>
+                            <p style="color: rgb(51, 51, 51);margin-left:-1cm"><i class="fas fa-phone-square"></i>&nbsp;&nbsp;Phone: <a href="#" style="color: rgb(51, 51, 51);">0788 111 111</a></p>
+                            <p style="color: rgb(51, 51, 51);margin-left:65px"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Email: <a style="color: rgb(51, 51, 51);" href="wingistore@gmail.com">nyarugenge@market.com</a></p>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div style="padding:40px; background: #fff;">
+        <p style="color: rgb(51, 51, 51); text-align: center;" class="footer-company">All Rights Reserved. &copy; 2022 WINGI store
+        
+        </p>
+    </div>
   
 {% endblock %}

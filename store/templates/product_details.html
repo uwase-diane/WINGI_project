@@ -92,6 +92,10 @@
         text-shadow: 0 0 20px #952;
 
     }
+    .image{
+       margin-top: 60px; 
+    
+    }
 </style>
 <hr>
 
@@ -100,7 +104,7 @@
         <div class="row">
             {% for object in product_item %}
 
-            <div class="col-md-6">
+            <div class="col-md-6 image">
                 <img src="{{object.image.url}}">
             </div>
             <div class="col-md-6" style="padding-top: 40px;">
@@ -110,10 +114,12 @@
                     <span>{{object.price}} RF</span>
             
                 </p>
-
+                <a href="{% url 'add-to-cart' object.id %}" class="btn btn-outline-dark word"><span>ADD TO
+                    CART</span></a>
 
                 <h5 class="detailsp"><strong>BEST FOR SENSITIVE SKIN</strong></h5>
                 <p class="details">{{object.description}}</p>
+                <p class="details"><strong>Category:</strong>{{object.category}}</p>
               
             </div>
 

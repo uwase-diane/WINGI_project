@@ -1,6 +1,14 @@
 {% load static %}
-
+{% load cart_template_tags %}
 <style>
+    footer{
+        
+        bottom: 0px;
+        /* width: 100%; */
+        background: #222;
+        color: rgb(228, 226, 226);
+        margin-top: 120px;
+    }
     li a{
         color: #000;
         font-family: 'Questrial', sans-serif;
@@ -26,7 +34,7 @@
     }
  
     .container-fluid{
-        background-color: #222;
+        background-color: #C9E265;
         padding: 5px;
     }
     .container-fluid p{
@@ -34,12 +42,17 @@
         text-align: center;
         margin-bottom: 5px;
     }
+    
 
 
 </style>
 
+<div class="container-fluid">
+    <p>call us on : +250 7871 0790 </p>
+</div>
+
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="{%url 'index'%}"><img src="https://res.cloudinary.com/auca/image/upload/v1615485201/glow_iekkot.png"></a>
+    <a class="navbar-brand" href="{%url 'index'%}"><img src="https://res.cloudinary.com/auca/image/upload/v1645879868/logo_e2dizw.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
     aria-controls="navbarTogglerdemo02" aria-expanded="false" aria-label="Toggle navigaion">
     <span class="navbar-toggler-icon"></span>
@@ -60,8 +73,7 @@
      
         </ul>
    
-        <a data-toggle="modal" data-target=".bd-example-modal-lg" type="submit"><i class="fa fa-search"
-            aria-hidden="true"></i></a>
+        <a data-toggle="modal" data-target=".bd-example-modal-lg" type="submit"><img src="https://res.cloudinary.com/auca/image/upload/v1645920342/searchicon_mnxdzi.png"></a>
 
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
@@ -76,12 +88,25 @@
         </div>
         
     </div>    
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'order_summary' %}" style="color: #000; position: relative;">
+        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+        <span class="badge">{{ request.user|cart_item_count }}</span>
+    </a>
+        <a href="{% url 'account_logout' %}" style="color: #000;font-family: 'Questrial', sans-serif;" class="clearfix d-none d-sm-inline-block">Logout</a>
+        {% else %}
+        <a href="{% url 'account_login' %}" style="color: #000;font-family: 'Questrial', sans-serif;" class="clearfix d-none d-sm-inline-block">Login /</a>
+        <a href="{% url 'account_signup' %}" style="color: #000;font-family: 'Questrial', sans-serif;" class="clearfix d-none d-sm-inline-block"> signup</a>
+     
+        {% endif %} 
 
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
             
             
         </div>
+
+
         
     </div>
 </nav>

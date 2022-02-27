@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    h1,
+    td,
+    th {
+        text-align: center;
+        font-family: 'Kumbh Sans', sans-serif;
+        color: #545454;
+    }
+
+    .table {
+        margin-top: 60px;
+
+    }
+
+    textarea {
+        padding: 15px;
+        height: 100px;
+        margin-left: 20px;
+    }
+    
+</style>
+
+<hr>
+
+
+<body>
+    <h1>Your Cart</h1>
+    <hr style="width:6%; border:2px solid #C9E265; margin-top: 20px;" >
+    <a style="text-decoration:underline;font-size:20px;color:#44463e; text-align: center; font-family: 'Dosis', sans-serif; padding-top: 40px;"
+        href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i>Continue shopping<span></span></a>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order_item in object.items.all %}
+                <tr>
+                    <td>{{ order_item.item.title }}
+                        <br>
+                        
+                    </td>
+
+                    <td>{{ order_item.item.price }} RF</td>
+                    <td>
+                        <a href="{% url 'remove-single-item' order_item.item.id %}" style="color:#545454;"><img src="https://res.cloudinary.com/auca/image/upload/v1645952136/minus_q4nv7y.png"></a>
+                        {{ order_item.quantity }}
+                        <a href="{% url 'add-to-cart' order_item.item.id %}" style="color:#545454;"><img src="https://res.cloudinary.com/auca/image/upload/v1645952157/plus_avhg3n.png"></a> 
+                    </td>
+                    <td>
+                        {{ order_item.get_total_item_price }} RF
+
+                        <a href="{% url 'remove-from-cart' order_item.item.id %}" style="color: #545454;"><img class="float-right" src="https://res.cloudinary.com/auca/image/upload/v1645953973/delete_yqps4s.png"></a>
+                    </td>
+                </tr>
+               
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="font-size: 20px;">Your cart is empty</td>
+                </tr>
+            
+                {% endfor %}
+            </tbody>
+
+        </table>
+        <hr>
+
+        <div class="row my-5">
+            <div class="col-lg-6 col-sm-6" style="padding-top: 40px;">
+                {% if object.get_total %}
+                <div class="update-box"
+                    style="text-align: center;font-family: 'Kumbh Sans', sans-serif; ;letter-spacing: 1.5px;">
+                    <p><strong>Order Total</strong> <span style="margin-left: 80px;"><strong>{{ object.get_total }} RF</strong></span></p>
+                    <hr>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.headers {
+        background-image: url("https://res.cloudinary.com/auca/image/upload/v1645905451/8_igqysg.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: right;
+        height: 60vh;
+    }
+</style>
+
+<div class="headers" data-aos="fade-up" data-aos-duration="3000">
+    <div>
+        <!-- <h2  class="p-head" data-aos="fade-up" data-aos-duration="3000">
+           Discover amazing grocery deals and save actual money
+        </h2> -->
+    </div>
+
+</div> 
+
+{% for item in items %}
+<body>
+    <div class="order-content">
+        <h3 class="text-center" style="margin-top: 50px; font-family: 'Kumbh Sans', sans-serif; font-size: 30px;">{{item.category}}</h3>
+        <hr style="width:6%; border:2px solid #C9E265; margin-top: 20px;" >
+
+        <div class="row row-cols-2 col-md-12 col-sm-2">
+            <div class="col-md-3 " style="padding-top: 100px;">
+              <div style="width: 12rem;">
+                <a class="hov" href="{% url 'product' item.id %}" style="color: #545454;">
+                <img class="card-img-top" src="{{item.image.url}}" alt="Card image cap">
+                
+                  <h5 class="title" ><strong>{{item.title}}</strong></h5>
+                
+                <hr>
+                <p class="title">
+              
+                  {{item.price}} RF
+                  
+                </p>
+                
+              </a>
+              
+              </div>
+            </div>
+        
+           
+        
+          </div>
+    </div>
+    {% endfor %}
+</body>
+
+{% endblock %}
