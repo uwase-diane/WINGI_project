@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-hs)(!)6@3!!$k3@krjhy8p8&)39k#uvi6_dfymz%@_@vyybvnb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wingistore.herokuapp.com']
 
 
 # Application definition
@@ -85,9 +85,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'wingiproject',
-        'USER': 'postgres',
-    'PASSWORD':'root',
+        'NAME': 'd98nlb4nk4gn1o',
+        'USER': 'bhwsurrzlaqvdh',
+        'PASSWORD':'c8867ee6d54a83ced8aa39ca27093c350a458c757fe5ba95350fd2c14f5760b0',
+        'HOST':'ec2-44-194-113-156.compute-1.amazonaws.com',
+        'PORT':'5432',
     }
 }
 
@@ -122,13 +124,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -158,5 +162,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+
