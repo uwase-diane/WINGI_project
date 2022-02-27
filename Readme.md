@@ -9,8 +9,7 @@ Uwase Diane
 
 ## Description
 
-an application is an ecomerce platform where merchants can create their own store and share therir products
-to their consumers 
+an application is an ecomerce platform where merchants can create their own store and share therir products to their consumers. the merchants can then edit these products.
 
 ## Dependencies
 
